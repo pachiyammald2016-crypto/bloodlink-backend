@@ -44,6 +44,11 @@ public class DonorController {
         String email = credentials.get("email");
         String password = credentials.get("password");
         
+        Optional<Donor> existing = donorService.getDonorByEmail(email);
+        if (existing.isEmpty()) {
+            return ResponseEntity.status(404).body("Please sign up first");
+        }
+        
         Donor donor = donorService.loginDonor(email, password);
         if (donor != null) {
             return ResponseEntity.ok(donor);
