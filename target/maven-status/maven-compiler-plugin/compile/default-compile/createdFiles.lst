@@ -1,9 +1,13 @@
-com\bloodlink\BloodLinkApplication.class
-com\bloodlink\repository\BloodRequestRepository.class
 com\bloodlink\model\BloodRequest.class
 com\bloodlink\controller\BloodRequestController.class
+com\bloodlink\repository\DonorRepository.class
+com\bloodlink\BloodLinkApplication.class
+com\bloodlink\repository\BloodRequestRepository.class
+com\bloodlink\controller\OtpController.class
 com\bloodlink\service\DonorService.class
 com\bloodlink\service\BloodRequestService.class
 com\bloodlink\controller\DonorController.class
-com\bloodlink\repository\DonorRepository.class
+com\bloodlink\service\EmailService.class
+com\bloodlink\service\OtpService$OtpDetails.class
+com\bloodlink\service\OtpService.class
 com\bloodlink\model\Donor.class

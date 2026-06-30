@@ -2,8 +2,11 @@ C:\Users\DELL\.gemini\antigravity\scratch\bloodlink-backend\src\main\java\com\bl
 C:\Users\DELL\.gemini\antigravity\scratch\bloodlink-backend\src\main\java\com\bloodlink\service\BloodRequestService.java
 C:\Users\DELL\.gemini\antigravity\scratch\bloodlink-backend\src\main\java\com\bloodlink\model\Donor.java
 C:\Users\DELL\.gemini\antigravity\scratch\bloodlink-backend\src\main\java\com\bloodlink\service\DonorService.java
+C:\Users\DELL\.gemini\antigravity\scratch\bloodlink-backend\src\main\java\com\bloodlink\service\OtpService.java
+C:\Users\DELL\.gemini\antigravity\scratch\bloodlink-backend\src\main\java\com\bloodlink\controller\OtpController.java
 C:\Users\DELL\.gemini\antigravity\scratch\bloodlink-backend\src\main\java\com\bloodlink\controller\BloodRequestController.java
 C:\Users\DELL\.gemini\antigravity\scratch\bloodlink-backend\src\main\java\com\bloodlink\repository\DonorRepository.java
 C:\Users\DELL\.gemini\antigravity\scratch\bloodlink-backend\src\main\java\com\bloodlink\BloodLinkApplication.java
+C:\Users\DELL\.gemini\antigravity\scratch\bloodlink-backend\src\main\java\com\bloodlink\service\EmailService.java
 C:\Users\DELL\.gemini\antigravity\scratch\bloodlink-backend\src\main\java\com\bloodlink\model\BloodRequest.java
 C:\Users\DELL\.gemini\antigravity\scratch\bloodlink-backend\src\main\java\com\bloodlink\controller\DonorController.java

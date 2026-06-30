@@ -2,6 +2,7 @@ package com.bloodlink.controller;
 
 import com.bloodlink.model.Donor;
 import com.bloodlink.service.DonorService;
+import com.bloodlink.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,9 +34,18 @@ public class DonorController {
         return ResponseEntity.ok("Database cleared successfully!");
     }
 
+    @Autowired
+    private EmailService emailService;
+
     @PostMapping
     public ResponseEntity<Donor> registerDonor(@RequestBody Donor donor) {
         Donor savedDonor = donorService.registerDonor(donor);
+        
+        // Send welcome HTML email asynchronously to avoid blocking the API response
+        new Thread(() -> {
+            emailService.sendWelcomeEmail(savedDonor);
+        }).start();
+        
         return ResponseEntity.ok(savedDonor);
     }
 

@@ -46,7 +46,13 @@ public class DonorService {
         Optional<Donor> existing = donorRepository.findByEmail(email);
         if (existing.isPresent()) {
             Donor donor = existing.get();
-            if (donor.getPassword() != null && donor.getPassword().equals(password)) {
+            if (donor.getPassword() == null || donor.getPassword().isEmpty()) {
+                // Legacy user without a password. Set the password on their first login.
+                donor.setPassword(password);
+                donorRepository.save(donor);
+                return donor;
+            }
+            if (donor.getPassword().equals(password)) {
                 return donor;
             }
         }
