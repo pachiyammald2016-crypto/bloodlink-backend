@@ -20,7 +20,41 @@ public class DonorService {
         if (donor.getAvailability() == null) {
             donor.setAvailability(true);
         }
+        
+        // If donor already exists with this email, update instead of creating new
+        Optional<Donor> existing = donorRepository.findByEmail(donor.getEmail());
+        if (existing.isPresent()) {
+            Donor e = existing.get();
+            e.setName(donor.getName());
+            e.setBloodGroup(donor.getBloodGroup());
+            e.setCity(donor.getCity());
+            e.setArea(donor.getArea());
+            e.setPhone(donor.getPhone());
+            e.setLastDonation(donor.getLastDonation());
+            e.setAvailability(donor.getAvailability());
+            e.setBio(donor.getBio());
+            if (donor.getPassword() != null && !donor.getPassword().isEmpty()) {
+                e.setPassword(donor.getPassword());
+            }
+            return donorRepository.save(e);
+        }
+        
         return donorRepository.save(donor);
+    }
+
+    public Donor loginDonor(String email, String password) {
+        Optional<Donor> existing = donorRepository.findByEmail(email);
+        if (existing.isPresent()) {
+            Donor donor = existing.get();
+            if (donor.getPassword() != null && donor.getPassword().equals(password)) {
+                return donor;
+            }
+        }
+        return null;
+    }
+
+    public Optional<Donor> getDonorByEmail(String email) {
+        return donorRepository.findByEmail(email);
     }
 
     public List<Donor> getAllDonors(String bloodGroup, String city, Boolean availability) {

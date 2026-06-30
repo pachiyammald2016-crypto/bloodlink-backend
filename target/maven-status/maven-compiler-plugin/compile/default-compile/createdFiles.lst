@@ -1,0 +1,9 @@
+com\bloodlink\BloodLinkApplication.class
+com\bloodlink\repository\BloodRequestRepository.class
+com\bloodlink\model\BloodRequest.class
+com\bloodlink\controller\BloodRequestController.class
+com\bloodlink\service\DonorService.class
+com\bloodlink\service\BloodRequestService.class
+com\bloodlink\controller\DonorController.class
+com\bloodlink\repository\DonorRepository.class
+com\bloodlink\model\Donor.class

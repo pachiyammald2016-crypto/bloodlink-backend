@@ -6,7 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/donors")
@@ -33,6 +37,29 @@ public class DonorController {
     public ResponseEntity<Donor> registerDonor(@RequestBody Donor donor) {
         Donor savedDonor = donorService.registerDonor(donor);
         return ResponseEntity.ok(savedDonor);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> loginDonor(@RequestBody Map<String, String> credentials) {
+        String email = credentials.get("email");
+        String password = credentials.get("password");
+        
+        Donor donor = donorService.loginDonor(email, password);
+        if (donor != null) {
+            return ResponseEntity.ok(donor);
+        } else {
+            return ResponseEntity.status(401).body("Invalid email or password");
+        }
+    }
+
+    @GetMapping("/email/{email}")
+    public ResponseEntity<?> getDonorByEmail(@PathVariable String email) {
+        Optional<Donor> donor = donorService.getDonorByEmail(email);
+        if (donor.isPresent()) {
+            return ResponseEntity.ok(donor.get());
+        } else {
+            return ResponseEntity.status(404).body("Donor not found");
+        }
     }
 
     @GetMapping

@@ -30,6 +30,9 @@ public class Donor {
     @Column(name = "email", length = 100)
     private String email;
 
+    @Column(name = "password", length = 100)
+    private String password;
+
     @Column(name = "last_donation")
     private LocalDate lastDonation;
 
@@ -52,13 +55,14 @@ public class Donor {
     public Donor() {
     }
 
-    public Donor(String name, String bloodGroup, String city, String area, String phone, String email, LocalDate lastDonation, Boolean availability, String bio) {
+    public Donor(String name, String bloodGroup, String city, String area, String phone, String email, String password, LocalDate lastDonation, Boolean availability, String bio) {
         this.name = name;
         this.bloodGroup = bloodGroup;
         this.city = city;
         this.area = area;
         this.phone = phone;
         this.email = email;
+        this.password = password;
         this.lastDonation = lastDonation;
         this.availability = availability;
         this.bio = bio;
@@ -119,6 +123,14 @@ public class Donor {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public LocalDate getLastDonation() {
