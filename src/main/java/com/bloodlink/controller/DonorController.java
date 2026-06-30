@@ -16,6 +16,19 @@ public class DonorController {
     @Autowired
     private DonorService donorService;
 
+    @Autowired
+    private com.bloodlink.repository.DonorRepository donorRepository;
+
+    @Autowired
+    private com.bloodlink.repository.BloodRequestRepository bloodRequestRepository;
+
+    @DeleteMapping("/clear-all-database-data")
+    public ResponseEntity<String> clearAllData() {
+        donorRepository.deleteAll();
+        bloodRequestRepository.deleteAll();
+        return ResponseEntity.ok("Database cleared successfully!");
+    }
+
     @PostMapping
     public ResponseEntity<Donor> registerDonor(@RequestBody Donor donor) {
         Donor savedDonor = donorService.registerDonor(donor);
