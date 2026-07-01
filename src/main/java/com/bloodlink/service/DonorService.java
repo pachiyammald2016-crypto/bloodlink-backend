@@ -33,6 +33,8 @@ public class DonorService {
             e.setLastDonation(donor.getLastDonation());
             e.setAvailability(donor.getAvailability());
             e.setBio(donor.getBio());
+            e.setLatitude(donor.getLatitude());
+            e.setLongitude(donor.getLongitude());
             if (donor.getPassword() != null && !donor.getPassword().isEmpty()) {
                 e.setPassword(donor.getPassword());
             }
