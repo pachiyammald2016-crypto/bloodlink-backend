@@ -27,7 +27,10 @@ public class OtpController {
         }
         
         String otp = otpService.generateOtp(email);
-        emailService.sendOtpEmail(email, otp);
+        
+        new Thread(() -> {
+            emailService.sendOtpEmail(email, otp);
+        }).start();
         
         Map<String, String> response = new HashMap<>();
         response.put("message", "OTP sent successfully to " + email);
