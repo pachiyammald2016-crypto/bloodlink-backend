@@ -24,7 +24,11 @@ public class EmailService {
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
             
-            helper.setFrom(senderEmail);
+            try {
+                helper.setFrom(senderEmail, "Bloodlink Pro");
+            } catch (java.io.UnsupportedEncodingException e) {
+                helper.setFrom(senderEmail);
+            }
             helper.setTo(toEmail);
             helper.setSubject("BloodLink - Your Verification Code");
             
@@ -53,7 +57,11 @@ public class EmailService {
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
             
-            helper.setFrom(senderEmail);
+            try {
+                helper.setFrom(senderEmail, "Bloodlink Pro");
+            } catch (java.io.UnsupportedEncodingException e) {
+                helper.setFrom(senderEmail);
+            }
             helper.setTo(donor.getEmail());
             helper.setSubject("Welcome to BloodLink, Lifesaver!");
             
