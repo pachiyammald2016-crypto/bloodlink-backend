@@ -40,12 +40,15 @@ public class DonorController {
     @PostMapping
     public ResponseEntity<?> registerDonor(@RequestBody Donor donor) {
         try {
+            boolean isNewRegistration = (donor.getId() == null);
             Donor savedDonor = donorService.registerDonor(donor);
             
-            // Send welcome HTML email asynchronously to avoid blocking the API response
-            new Thread(() -> {
-                emailService.sendWelcomeEmail(savedDonor);
-            }).start();
+            if (isNewRegistration) {
+                // Send welcome HTML email asynchronously to avoid blocking the API response
+                new Thread(() -> {
+                    emailService.sendWelcomeEmail(savedDonor);
+                }).start();
+            }
             
             return ResponseEntity.ok(savedDonor);
         } catch (org.springframework.dao.DataIntegrityViolationException e) {

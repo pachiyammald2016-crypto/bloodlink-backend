@@ -101,8 +101,9 @@ public class EmailService {
             helper.setText(htmlContent, true);
             mailSender.send(message);
             System.out.println("Welcome email sent successfully to " + donor.getEmail());
-        } catch (MessagingException e) {
+        } catch (Exception e) {
             System.err.println("Failed to send welcome email: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }
