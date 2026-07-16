@@ -65,7 +65,7 @@ public class EmailService {
                 + "<div style='width: 420px; height: 265px; margin: 0 auto; border-radius: 14px; box-shadow: 0 15px 25px rgba(230, 57, 70, 0.2); overflow: hidden; background-color: #9b2226; background-image: url(\"https://images.unsplash.com/photo-1615461066841-6116e61058f4?q=80&w=600&auto=format&fit=crop\"); background-size: cover; background-position: center; border: 1px solid #7a1518;'>"
                 
                 + "<!-- Gradient Overlay -->"
-                + "<div style='width: 100%; height: 100%; background: linear-gradient(135deg, rgba(230, 57, 70, 0.88) 0%, rgba(155, 34, 38, 0.95) 100%); color: white; box-sizing: border-box; padding: 25px;'>"
+                + "<div style='width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); color: white; box-sizing: border-box; padding: 25px;'>"
                 
                 + "<!-- Header -->"
                 + "<table width='100%' cellpadding='0' cellspacing='0' border='0' style='border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 15px; margin-bottom: 15px;'>"
