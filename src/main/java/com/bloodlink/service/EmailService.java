@@ -55,46 +55,56 @@ public class EmailService {
     }
 
     public void sendWelcomeEmail(Donor donor) {
-        String subject = "Welcome to BloodLink, Lifesaver!";
-        String htmlContent = "<div style='font-family: Arial, sans-serif; max-width: 500px; margin: auto; border: 1px solid #e0e0e0; border-radius: 12px; overflow: hidden;'>"
-                + "<div style='background: linear-gradient(135deg, #e63946, #9b2226); padding: 30px 20px; text-align: center; color: white;'>"
-                + "<h2 style='margin: 0; font-size: 24px; font-weight: bold; letter-spacing: 1px;'>BloodLink Donor</h2>"
-                + "<p style='margin-top: 5px; opacity: 0.9;'>Welcome to the Lifesavers Community!</p>"
+        String donorId = donor.getId() != null ? String.format("%04d", donor.getId()) : String.valueOf(System.currentTimeMillis()).substring(8);
+        String subject = "Welcome to BloodLink - Your Donor ID Card";
+        
+        String htmlContent = "<div style='font-family: \"Helvetica Neue\", Arial, sans-serif; max-width: 550px; margin: auto; background-color: #f9f9f9; padding: 30px; border-radius: 12px;'>"
+                + "<p style='text-align: center; color: #444; font-size: 16px; margin-bottom: 25px; line-height: 1.5;'>Hi <b>" + donor.getName() + "</b>,<br>Welcome to the BloodLink community! Here is your official Donor Identification Card.</p>"
+                
+                + "<!-- ID Card Container -->"
+                + "<div style='width: 420px; height: 265px; margin: 0 auto; border-radius: 14px; box-shadow: 0 15px 25px rgba(230, 57, 70, 0.2); overflow: hidden; background-color: #9b2226; background-image: url(\"https://images.unsplash.com/photo-1615461066841-6116e61058f4?q=80&w=600&auto=format&fit=crop\"); background-size: cover; background-position: center; border: 1px solid #7a1518;'>"
+                
+                + "<!-- Gradient Overlay -->"
+                + "<div style='width: 100%; height: 100%; background: linear-gradient(135deg, rgba(230, 57, 70, 0.88) 0%, rgba(155, 34, 38, 0.95) 100%); color: white; box-sizing: border-box; padding: 25px;'>"
+                
+                + "<!-- Header -->"
+                + "<table width='100%' cellpadding='0' cellspacing='0' border='0' style='border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 15px; margin-bottom: 15px;'>"
+                + "<tr>"
+                + "<td align='left' valign='middle'>"
+                + "<h2 style='margin: 0; font-size: 24px; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);'>BLOODLINK</h2>"
+                + "<p style='margin: 4px 0 0; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; opacity: 0.9;'>DONOR IDENTIFICATION CARD</p>"
+                + "</td>"
+                + "<td align='right' valign='middle'>"
+                + "<div style='background-color: white; color: #e63946; padding: 8px 16px; border-radius: 8px; font-size: 24px; font-weight: 900; box-shadow: 0 4px 10px rgba(0,0,0,0.25); display: inline-block;'>"
+                + donor.getBloodGroup()
                 + "</div>"
-                + "<div style='padding: 30px; background-color: #ffffff;'>"
-                + "<p style='font-size: 16px; margin-bottom: 20px;'>Hi <strong style='color: #e63946;'>" + donor.getName() + "</strong>,</p>"
-                + "<p style='color: #555; line-height: 1.6; margin-bottom: 25px;'>"
-                + "Thank you for registering as a blood donor on BloodLink. Your willingness to donate blood can save countless lives. Below are your registration details:"
-                + "</p>"
-                + "<div style='background: #f8f9fa; border: 1px solid #eeeeee; border-radius: 10px; padding: 20px;'>"
-                + "<table style='width: 100%; border-collapse: collapse;'>"
-                
-                + "<tr>"
-                + "<td style='padding: 10px 0; border-bottom: 1px solid #eeeeee; color: #777;'>Blood Group</td>"
-                + "<td style='padding: 10px 0; border-bottom: 1px solid #eeeeee; text-align: right;'><strong style='color: #e63946; font-size: 18px;'>" + donor.getBloodGroup() + "</strong></td>"
+                + "</td>"
                 + "</tr>"
-                
-                + "<tr>"
-                + "<td style='padding: 10px 0; border-bottom: 1px solid #eeeeee; color: #777;'>Location</td>"
-                + "<td style='padding: 10px 0; border-bottom: 1px solid #eeeeee; text-align: right; color: #333;'><strong>" + donor.getArea() + ", " + donor.getCity() + "</strong></td>"
-                + "</tr>"
-                
-                + "<tr>"
-                + "<td style='padding: 10px 0; border-bottom: 1px solid #eeeeee; color: #777;'>Phone</td>"
-                + "<td style='padding: 10px 0; border-bottom: 1px solid #eeeeee; text-align: right; color: #333;'><strong>+91 " + donor.getPhone() + "</strong></td>"
-                + "</tr>"
-                
-                + "<tr>"
-                + "<td style='padding: 10px 0; color: #777;'>Email</td>"
-                + "<td style='padding: 10px 0; text-align: right; color: #333;'><strong>" + donor.getEmail() + "</strong></td>"
-                + "</tr>"
-                
                 + "</table>"
+
+                + "<!-- Details -->"
+                + "<table width='100%' cellpadding='0' cellspacing='0' border='0' style='font-size: 14px; line-height: 1.7;'>"
+                + "<tr>"
+                + "<td width='30%' style='color: rgba(255,255,255,0.7); text-transform: uppercase; font-size: 10px; font-weight: bold; letter-spacing: 1px; padding-bottom: 6px;'>Name</td>"
+                + "<td width='70%' style='font-size: 18px; font-weight: bold; text-transform: uppercase; text-shadow: 1px 1px 1px rgba(0,0,0,0.2); padding-bottom: 6px;'>" + donor.getName() + "</td>"
+                + "</tr>"
+                + "<tr>"
+                + "<td style='color: rgba(255,255,255,0.7); text-transform: uppercase; font-size: 10px; font-weight: bold; letter-spacing: 1px; padding-bottom: 6px;'>Location</td>"
+                + "<td style='font-size: 15px; font-weight: 500; padding-bottom: 6px;'>" + donor.getArea() + ", " + donor.getCity() + "</td>"
+                + "</tr>"
+                + "<tr>"
+                + "<td style='color: rgba(255,255,255,0.7); text-transform: uppercase; font-size: 10px; font-weight: bold; letter-spacing: 1px; padding-bottom: 6px;'>Contact</td>"
+                + "<td style='font-size: 15px; font-weight: 500; padding-bottom: 6px;'>+91 " + donor.getPhone() + "</td>"
+                + "</tr>"
+                + "<tr>"
+                + "<td style='color: rgba(255,255,255,0.7); text-transform: uppercase; font-size: 10px; font-weight: bold; letter-spacing: 1px;'>Card No.</td>"
+                + "<td style='font-size: 15px; font-family: monospace; font-weight: bold; letter-spacing: 1px; color: #ffccd5;'>BLD-" + donorId + "</td>"
+                + "</tr>"
+                + "</table>"
+                
                 + "</div>"
-                + "<div style='margin-top: 30px; text-align: center;'>"
-                + "<p style='color: #888; font-size: 14px;'>You can update your availability anytime by logging into BloodLink.</p>"
                 + "</div>"
-                + "</div>"
+                + "<p style='text-align: center; color: #888; font-size: 13px; margin-top: 30px; border-top: 1px solid #ddd; padding-top: 20px;'>Keep this card safe. Thank you for being a lifesaver and a hero to our community!</p>"
                 + "</div>";
                 
         sendEmailViaGAS(donor.getEmail(), subject, htmlContent);
