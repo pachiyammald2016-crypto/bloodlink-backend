@@ -37,6 +37,30 @@ public class DonorController {
     @Autowired
     private EmailService emailService;
 
+    @Autowired
+    private org.springframework.mail.javamail.JavaMailSender mailSender;
+
+    @GetMapping("/test-email")
+    public ResponseEntity<String> testEmail(@RequestParam String to) {
+        try {
+            jakarta.mail.internet.MimeMessage message = mailSender.createMimeMessage();
+            org.springframework.mail.javamail.MimeMessageHelper helper = new org.springframework.mail.javamail.MimeMessageHelper(message, true, "UTF-8");
+            helper.setFrom("pachiyammald2016@gmail.com");
+            helper.setTo(to);
+            helper.setSubject("Test Email");
+            helper.setText("This is a test email.", true);
+            mailSender.send(message);
+            return ResponseEntity.ok("Test email sent successfully to " + to);
+        } catch (Exception e) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("Error: ").append(e.getMessage()).append("\n");
+            for (StackTraceElement element : e.getStackTrace()) {
+                sb.append(element.toString()).append("\n");
+            }
+            return ResponseEntity.status(500).body(sb.toString());
+        }
+    }
+
     @PostMapping
     public ResponseEntity<?> registerDonor(@RequestBody Donor donor) {
         try {
