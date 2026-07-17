@@ -20,6 +20,12 @@ public class BloodRequest {
     @Column(name = "hospital", length = 200, nullable = false)
     private String hospital;
 
+    @Column(name = "age")
+    private Integer age;
+
+    @Column(name = "gender", length = 10)
+    private String gender;
+
     @Column(name = "city", length = 100, nullable = false)
     private String city;
 
@@ -156,5 +162,21 @@ public class BloodRequest {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

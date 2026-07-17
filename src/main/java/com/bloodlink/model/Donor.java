@@ -33,6 +33,12 @@ public class Donor {
     @Column(name = "password", length = 100)
     private String password;
 
+    @Column(name = "age")
+    private Integer age;
+
+    @Column(name = "gender", length = 10)
+    private String gender;
+
     @Column(name = "last_donation")
     private LocalDate lastDonation;
 
@@ -179,5 +185,21 @@ public class Donor {
 
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }
