@@ -70,9 +70,9 @@ public class EmailService {
                 + "<table width='100%' height='100%' cellpadding='0' cellspacing='0' border='0'>"
                 + "<tr>"
                 + "<!-- Spacer for the globe and hands on the left -->"
-                + "<td width='55%'>&nbsp;</td>"
+                + "<td width='63%'>&nbsp;</td>"
                 + "<!-- Details on the right -->"
-                + "<td width='45%' valign='middle' style='padding-right: 20px;'>"
+                + "<td width='37%' valign='middle' style='padding-right: 15px;'>"
                 
                 + "<!-- Header -->"
                 + "<table width='100%' cellpadding='0' cellspacing='0' border='0' style='border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 6px; margin-bottom: 8px;'>"
@@ -81,7 +81,7 @@ public class EmailService {
                 + "<p style='margin: 0; font-size: 13px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; color: #ffffff;'>DONOR ID</p>"
                 + "</td>"
                 + "<td align='right' valign='middle'>"
-                + "<div style='background-color: #ffffff; color: #cc0000; padding: 3px 6px; border-radius: 4px; font-size: 13px; font-weight: 900; box-shadow: 0 2px 5px rgba(0,0,0,0.3); display: inline-block;'>"
+                + "<div style='background-color: #ffffff; color: #cc0000; padding: 2px 5px; border-radius: 4px; font-size: 13px; font-weight: 900; box-shadow: 0 2px 5px rgba(0,0,0,0.3); display: inline-block;'>"
                 + donor.getBloodGroup()
                 + "</div>"
                 + "</td>"
