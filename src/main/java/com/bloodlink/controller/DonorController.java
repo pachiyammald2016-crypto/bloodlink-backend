@@ -64,7 +64,9 @@ public class DonorController {
     @PostMapping
     public ResponseEntity<?> registerDonor(@RequestBody Donor donor) {
         try {
-            boolean isNewRegistration = (donor.getId() == null);
+            boolean isEmailAlreadyRegistered = donorService.getDonorByEmail(donor.getEmail()).isPresent();
+            boolean isNewRegistration = (donor.getId() == null) && !isEmailAlreadyRegistered;
+            
             Donor savedDonor = donorService.registerDonor(donor);
             
             if (isNewRegistration) {
